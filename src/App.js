@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import './styles/main.scss';
+import React, { Component } from 'react'
+import './styles/main.scss'
 import anime from 'animejs'
-import Stripe from './Sripe';
+import Stripe from './Sripe'
+import { Helmet } from 'react-helmet'
 
 class App extends Component {
   componentDidMount () {
@@ -21,6 +22,10 @@ class App extends Component {
         <Stripe color="pink" top="I can ride a scooter" bottom="I had dreadlocks" />
         <Stripe color="purple" top="I wash dishes by hand" bottom="Sometimes I beer" />
         <Stripe color="blue" top="I forget security questions" bottom="I own 3 cats" />
+
+        <Helmet>
+          <title>cmccullough</title>
+        </Helmet>
       </div>
     );
   }
