@@ -1,0 +1,104 @@
+/**
+colors
+FF981A
+E83600
+FF004B
+B700E8
+3200FF
+**/
+
+@import '~reset.css';
+@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+
+body {
+  background: black;
+  overflow: hidden;
+  font-family: 'Poiret One', cursive;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+$colors: (
+  orange: #FF981A,
+  red: #E83600,
+  pink: #FF004B,
+  purple: #B700E8,
+  blue: #3200FF
+);
+
+@each $color, $value in $colors {
+  .bg-#{$color} {
+    background: $value;
+
+    .top {
+      background: adjust-hue($value, 60deg);
+      color: adjust-hue($value, -60deg);
+    }
+
+    .bottom {
+      background: adjust-hue($value, -60deg);
+      color: adjust-hue($value, 60deg);
+    }
+  }
+}
+
+.stripes {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.stripe {
+  flex-grow: 1;
+  transform: translateY(-100vh);
+  position: relative;
+
+  .top,
+  .bottom {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: transform 1s ease-in-out;
+
+    &::before{
+      content: attr(data-text);
+      display: block;
+      font-size: 4vh;
+      -webkit-transform: rotate(-90deg);
+      transform: rotate(-90deg);
+      width: 100vh;
+      position: absolute;
+      top: 0;
+      left: 6vw;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+    }
+  }
+
+  .top {
+    transform: translateY(-100vh);
+  }
+
+  .bottom {
+    transform: translateY(100vh);
+  }
+
+  &.top {
+    .top {
+      transform: translateY(0vh);
+    }
+  }
+
+  &.bottom {
+    .bottom {
+      transform: translateY(0vh);
+    }
+  }
+}

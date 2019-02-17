@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles/main.scss';
+import anime from 'animejs'
+import Stripe from './Sripe';
 
 class App extends Component {
+  componentDidMount () {
+    anime({
+      targets: '.stripe',
+      translateY: ['-100vh', 0],
+      delay: anime.stagger(200),
+      duration: 10000
+    })
+  }
+  
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="stripes">
+        <Stripe color="orange" top="I am a web developer" bottom="I am a dad" />
+        <Stripe color="red" top="I am a juggalo" bottom="I vape" />
+        <Stripe color="pink" top="I can ride a scooter" bottom="I had dreadlocks" />
+        <Stripe color="purple" top="I wash dishes by hand" bottom="Sometimes I beer" />
+        <Stripe color="blue" top="I forget security questions" bottom="I own 3 cats" />
       </div>
     );
   }
